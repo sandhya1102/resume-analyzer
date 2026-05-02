@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
 
-export default ProtectedRoute
+  const googleUser = JSON.parse(localStorage.getItem("user") || "null");
+
+  if (!isAuthenticated && !googleUser && !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
+};
+
+export default ProtectedRoute;

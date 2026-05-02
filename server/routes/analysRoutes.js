@@ -1,9 +1,9 @@
 import express from "express";
-import { analyze } from "../contollers/analysContoller.js";
+import { analyzeResumeFile } from "../contollers/analysContoller.js";
 
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/analys",analyze)
+router.get("/analyze",analyzeResumeFile);
 
 export default router;

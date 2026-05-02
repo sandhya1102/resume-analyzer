@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "../server/routes/authRoutes.js";
+import resumeRoutes from "../server/routes/resumeRoutes.js";
 import analysRoutes from "../server/routes/analysRoutes.js";
+
 
 import connectDb from "./config/db.js";
 
@@ -20,8 +22,10 @@ app.use(
   }),
 );
 
-app.use("/api/auth", authRoutes);
-app.use("/api/anaysis", analysRoutes);
+app.use("/api/user", authRoutes);
+app.use("/api/resume", resumeRoutes);
+app.use("/api/analyze", analysRoutes);
+
 
 const PORT = process.env.PORT || 7000;
 
